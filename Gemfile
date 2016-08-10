@@ -45,7 +45,13 @@ group :development do
   gem 'spring'
 end
 
+#login via facebook, clearance and figaro to protect important data
 gem 'clearance'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
+
+#to allow users to upload picture
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'mini_magick'
+gem 'fog'

@@ -1,0 +1,163 @@
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <% if signed_in? %>
+     <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i> <span class="light">Start</span> AirBnB
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">START HOSTING</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#download">LOG OUT</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+
+
+    <% else %>
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i> <span class="light">Start</span> AirBnB
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">BECOME A HOST</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#download">SIGN UP</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">LOG IN</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    <% end %>
+
+
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">AirBnB</h1>
+                        <p class="intro-text">Book homes from local hosts in 191+ countries and experience a place like you live there.</p>
+                        <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" class="container text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Earn money as an Airbnb host</h2>
+                <p>From saving for home repairs to taking a dream trip, hosts use extra income to fund their passions.</p>
+                <p class="btn btn-default btn-lg"><%= link_to 'Start Hosting', new_listing_path %></p>
+            </div>
+        </div>
+    </section>
+
+<% if signed_in? %>
+    <section id="download" class="text-center">
+        <div class="download-section" id = "asd">
+            <div class="container">
+                <br>
+                <h2>Welcome to AirBnB</h2>
+                <ul class="list-inline banner-social-buttons">
+                    <li><% if signed_in? %>
+                      <h4>Signed in as: <%= current_user.email %></h4>
+                      <%= link_to 'See Your Listings', user_path(current_user.id), class: 'btn btn-default btn-lg' %>
+                      <br><br>
+                      <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'btn btn-default btn-lg' %><br><br>
+                      
+                      <% else %>
+                      <p class="btn btn-default btn-lg"> <%= link_to 'Log in', sign_in_path %>
+                      <% end %></p>
+                    </li>
+                </ul>
+             </div>
+            </div>
+        </div>
+    </section>
+    </section>
+
+    <%else%>
+
+    <section id="download" class="text-center">
+        <div class="download-section" id = "asd">
+            <div class="container"><br>
+                    <h2>Sign Up</h2>
+                    <p class="btn btn-default btn-lg"> <%= link_to 'Sign up', sign_up_path %> </p>
+        <section id="contact" style="padding-top:50px;">
+             <div class="signin">
+                <h2>Sign In</h2>
+                <ul class="list-inline banner-social-buttons">
+                    <li><% if signed_in? %>
+                      Signed in as: <%= current_user.email %>
+                      <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'blackfont'%>
+                      <% else %>
+                      <p class="btn btn-default btn-lg"> <%= link_to 'Log in', sign_in_path %>
+                      <% end %></p>
+                    </li>
+                    <li>
+                      <p class="btn btn-default btn-lg"><%= link_to "Connect With Facebook", "/auth/facebook" %></p>
+                    </li>
+                </ul>
+             </div>
+            </div>
+        </div>
+        </section>
+    </section>
+
+<%end%>
+
+    <footer>
+        <div class="container text-center">
+            <p>Copyright &copy; A Next Academy Production</p>
+        </div>
+    </footer>
+
+
+</body>

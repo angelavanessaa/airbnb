@@ -1,7 +1,6 @@
 class CreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|
-      t.boolean :host, default: false
       t.timestamps null: false
       t.string :email, null: false
       t.string :encrypted_password, limit: 128, null: false

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805172140) do
+ActiveRecord::Schema.define(version: 20160810113359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,14 +28,21 @@ ActiveRecord::Schema.define(version: 20160805172140) do
   create_table "listings", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "property_type"
-    t.string   "property_location"
-    t.text     "property_address"
-    t.text     "property_description"
+    t.string   "bed_count"
+    t.string   "max_people"
+    t.integer  "bathroom_count"
+    t.string   "bathroom_type"
+    t.string   "country"
+    t.text     "address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zipcode"
     t.integer  "price_per_night"
-    t.date     "date_availability"
-    t.integer  "max_people"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.date     "date_availability_start"
+    t.date     "date_availability_end"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.json     "avatars"
   end
 
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
@@ -53,13 +60,12 @@ ActiveRecord::Schema.define(version: 20160805172140) do
   add_index "reservations", ["user_id"], name: "index_reservations_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.boolean  "host",                           default: false
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
-    t.string   "email",                                          null: false
-    t.string   "encrypted_password", limit: 128,                 null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "email",                          null: false
+    t.string   "encrypted_password", limit: 128, null: false
     t.string   "confirmation_token", limit: 128
-    t.string   "remember_token",     limit: 128,                 null: false
+    t.string   "remember_token",     limit: 128, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree

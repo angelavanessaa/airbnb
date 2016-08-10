@@ -18,4 +18,5 @@ class SessionsController < Clearance::SessionsController
     redirect_to @next, :notice => @notice
   end
 
+
 end

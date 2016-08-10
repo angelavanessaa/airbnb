@@ -1,0 +1,15 @@
+<a href="/">Home</a><br><br>
+
+Room type: <%= @listing.property_type %><br>
+Number of beds: <%= @listing.bed_count %><br>
+Maximum number of people that can stay here: <%= @listing.max_people %><br>
+Number of bathrooms: <%= @listing.bathroom_count %><br>
+Bathroom type: <%= @listing.bathroom_type %>
+Address: <%= @listing.address %><br>
+City: <%= @listing.city %><br>
+State: <%= @listing.state %><br>
+Zipcode: <%= @listing.zipcode %><br>
+Country: <%= @listing.country %><br>
+Date Availability: <%= @listing.date_availability_start %> until <%= @listing.date_availability_end %><br>
+Price per night: <%= @listing.price_per_night %><br>
+<%= image_tag (@listing.avatars[0].large.url) %>

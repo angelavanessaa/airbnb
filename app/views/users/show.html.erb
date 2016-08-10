@@ -1,2 +1,24 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<a href="/">Home</a>
+
+<h1>Your Listings</h1>
+<% current_user.listings.all.each do |l| %>
+	This listing is created at: <%= l.created_at.to_date %><br>
+	Room type: <%= l.property_type %><br>
+	Number of beds: <%= l.bed_count %><br>
+	Maximum number of people that can stay here: <%= l.max_people %><br>
+	Number of bathrooms: <%= l.bathroom_count %><br>
+	Bathroom type: <%= l.bathroom_type %>
+	Address: <%= l.address %><br>
+	City: <%= l.city %><br>
+	State: <%= l.state %><br>
+	Zipcode: <%= l.zipcode %><br>
+	Country: <%= l.country %><br>
+	Date Availability: <%= l.date_availability_start %> until <%= l.date_availability_end %><br>
+	Price per night: <%= l.price_per_night %><br><br>
+<% end %>
+
+
+
+
+
+
