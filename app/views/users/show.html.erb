@@ -1,4 +1,18 @@
-<a href="/">Home</a>
+<a href="/">Home</a><br><br>
+
+<h1>Your Profile</h1><br>
+Name: <%= current_user.firstname %> <%= current_user.lastname %>
+<br><br>
+<%= form_for @user do |f| %>
+	First Name: <%= f.text_field :firstname, placeholder: 'First Name', class: 'blackfont' %><br>
+	Last Name: <%= f.text_field :lastname, placeholder: 'Last Name', class: 'blackfont' %><br>
+	Select Profile Picture: <%= f.file_field :avatars, multiple: true %><br><br>
+	<%= f.submit 'update profile', :class => 'blackfont' %><br><br><br>
+<% end %>
+
+<% unless @user.avatars[0].nil? %>
+<%= image_tag (@user.avatars[0].url) %><br><br>
+<% end %>
 
 <h1>Your Listings</h1>
 <% current_user.listings.all.each do |l| %>

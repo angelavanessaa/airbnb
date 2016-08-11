@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810113359) do
+ActiveRecord::Schema.define(version: 20160810160749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,8 @@ ActiveRecord::Schema.define(version: 20160810113359) do
   create_table "reservations", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "listing_id"
-    t.integer  "reservation_duration"
+    t.date     "check_in_date"
+    t.date     "check_out_date"
     t.integer  "number_of_people"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -66,6 +67,9 @@ ActiveRecord::Schema.define(version: 20160810113359) do
     t.string   "encrypted_password", limit: 128, null: false
     t.string   "confirmation_token", limit: 128
     t.string   "remember_token",     limit: 128, null: false
+    t.json     "avatars"
+    t.string   "firstname"
+    t.string   "lastname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", using: :btree
