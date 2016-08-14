@@ -1,8 +1,12 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :delete]
   before_action :require_login
+  require 'will_paginate'
+  require 'will_paginate/active_record'
+
 	  def index
-		  @listings = Listing.all
+		  # @listings = Listing.all
+      @listings = Listing.paginate(:page => params[:page], :per_page => 2)
    	end
    
    	def show
@@ -13,16 +17,18 @@ class ListingsController < ApplicationController
    	end
    
    	def create
-   	@listing = current_user.listings.new(listing_params)
-      if @listing.save
-        redirect_to listing_path(@listing)
-      end
+   	  @listing = current_user.listings.new(listing_params)
+        if @listing.save
+          redirect_to listing_path(@listing)
+        end
    	end
    
    	def edit
    	end
    
    	def update
+      @listing.update(listing_params)
+          redirect_to listing_path(@listing)
    	end
    
    	def delete

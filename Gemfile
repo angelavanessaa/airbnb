@@ -55,3 +55,6 @@ gem 'figaro'
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 gem 'fog'
+
+#paginate gem
+gem 'will_paginate', '~> 3.1.0'

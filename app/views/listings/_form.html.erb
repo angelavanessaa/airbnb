@@ -1,0 +1,33 @@
+<%= form_for @listing do |f| %>
+What kind of place are you listing?<br>
+	<%= f.select :property_type, options_for_select([['Entire place', 'entire_place'], ['Private room', 'private_room'], ['Shared room', 'shared_room']]) %><br>
+
+How many guests can your place accommodate?<br>
+	<%= f.select :bed_count, options_for_select([['1 Bed', '1bed'], ['2 Beds', '2beds'], ['3 Beds', '3beds'], ['4 Beds', '4beds'], ['5 Beds', '5beds'], ['6 Beds', '6beds'], ['7 Beds', '7beds'], ['8 Beds', '8beds'], ['9 Beds', '9beds'], ['10 Beds', '10beds']]) %><br>
+
+How many guests can stay?<br>
+	<%= f.select :max_people, options_for_select([['1 Person', '1person'], ['2 People', '2people'], ['3 People', '3people'], ['4 People', '4people'], ['5 People', '5people'], ['6 People', '6people'], ['7 People', '7people'], ['8 People', '8people'], ['9 People', '9people'], ['10 People', '10people']]) %><br>
+
+How many bathrooms?<br>
+	<%= f.select :bathroom_count, options_for_select([['1 Bathroom', '1bathroom'], ['2 Bathrooms', '2bathrooms'], ['3 Bathrooms', '3bathrooms'], ['4 Bathrooms', '4bathrooms'], ['5 Bathrooms', '5bathrooms'], ['6 Bathrooms', '6bathrooms'], ['7 Bathrooms', '7bathrooms'], ['8 Bathrooms', '8bathrooms'], ['9 Bathrooms', '9bathrooms'], ['10 Bathrooms', '10bathrooms']]) %>
+	<%= f.select :bathroom_type, options_for_select([['Private', 'private'], ['Shared', 'shared']]) %><br>
+
+Where’s your place located?<br>
+	<%= f.text_field :address, placeholder: 'Address', class: 'blackfont' %><br>
+	<%= f.text_field :city, placeholder: 'City', class: 'blackfont' %><br>
+	<%= f.text_field :state, placeholder: 'State', class: 'blackfont' %><br>
+	<%= f.text_field :zipcode, placeholder: 'Zipcode', class: 'blackfont' %><br>
+	<%= f.text_field :country, placeholder: 'Country', class: 'blackfont'%><br>
+
+When is your place available for rent?<br>
+	<%= f.date_select :date_availability_start %><br>
+	<%= f.date_select :date_availability_end %><br>
+
+How much would you rent it for?<br>
+	<%= f.text_field :price_per_night, placeholder: 'Rent price per night', class: 'blackfont' %><br>
+
+Upload pictures of the place you want to rent out!
+	<%= f.file_field :avatars, multiple: true %><br><br><br>
+
+	<%= f.submit 'host now', :class => 'blackfont' %>
+<% end %>

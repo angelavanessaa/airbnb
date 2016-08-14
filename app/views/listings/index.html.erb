@@ -13,6 +13,8 @@
 	Country: <%= l.country %><br>
 	Date Availability: <%= l.date_availability_start %> until <%= l.date_availability_end %><br>
 	Price per night: <%= l.price_per_night %><br>
-	<%= image_tag (l.avatars) %><br>
+	<%= image_tag l.avatars[0] %><br>
 	<%= link_to 'Reserve', new_listing_reservation_path(l) %><br><br>
 <% end %>
+
+<%= will_paginate @listings %>
