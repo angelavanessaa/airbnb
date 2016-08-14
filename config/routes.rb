@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       controller: "clearance/passwords",
       only: [:create, :edit, :update]
   end
-  resources :listings
+  resources :listings do 
+      resources :reservations, only: [:new]
+  end
   resources :reservations
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"

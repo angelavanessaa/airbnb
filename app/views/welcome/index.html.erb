@@ -108,10 +108,10 @@
                 <ul class="list-inline banner-social-buttons">
                     <li><% if signed_in? %>
                       <h4>Signed in as: <%= current_user.email %></h4>
-                      <%= link_to 'See Your Listings', user_path(current_user.id), class: 'btn btn-default btn-lg' %>
+                      <%= link_to 'Profile', user_path(current_user.id), class: 'btn btn-default btn-lg' %>
                       <br><br>
+                      <%= link_to 'See All Listings', listings_path, class: 'btn btn-default btn-lg' %><br><br>
                       <%= button_to 'Sign out', sign_out_path, method: :delete, class: 'btn btn-default btn-lg' %><br><br>
-                      
                       <% else %>
                       <p class="btn btn-default btn-lg"> <%= link_to 'Log in', sign_in_path %>
                       <% end %></p>
@@ -150,9 +150,7 @@
         </div>
         </section>
     </section>
-
 <%end%>
-
     <footer>
         <div class="container text-center">
             <p>Copyright &copy; A Next Academy Production</p>

@@ -10,11 +10,15 @@ class ReservationsController < ApplicationController
 	end
 
 	def new
-		@book = Reservation.new
+		@reservation = Reservation.new
+		@listing = Listing.find(params[:listing_id])
 	end
 
 	def create
 		@book = current_user.reservations.new(booking_params)
+		if @book.save
+			redirect_to user_path(current_user)
+		end
 	end
 
 	def edit
@@ -28,7 +32,7 @@ class ReservationsController < ApplicationController
 
 	private
 	def booking_params
-		#strong params here
+		params.require(:reservation).permit(:user_id, :listing_id, :check_in_date, :check_out_date, :number_of_people)
 	end
 
 	def set_booking

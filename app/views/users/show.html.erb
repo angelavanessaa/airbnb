@@ -21,17 +21,25 @@ Name: <%= current_user.firstname %> <%= current_user.lastname %>
 	Number of beds: <%= l.bed_count %><br>
 	Maximum number of people that can stay here: <%= l.max_people %><br>
 	Number of bathrooms: <%= l.bathroom_count %><br>
-	Bathroom type: <%= l.bathroom_type %>
+	Bathroom type: <%= l.bathroom_type %><br>
 	Address: <%= l.address %><br>
 	City: <%= l.city %><br>
 	State: <%= l.state %><br>
 	Zipcode: <%= l.zipcode %><br>
 	Country: <%= l.country %><br>
 	Date Availability: <%= l.date_availability_start %> until <%= l.date_availability_end %><br>
-	Price per night: <%= l.price_per_night %><br><br>
+	Price per night: <%= l.price_per_night %><br>
+	<%= image_tag l.avatars %><br><br>
 <% end %>
 
-
+<h1>Your Reservations</h1>
+<% current_user.reservations.all.each do |r| %>
+	<% @listing = Reservation.find(r.id).listing_id %>
+	<%= Listing.find(@listing).country %><br>
+	Check In Date: <%= r.check_in_date %><br>
+	Check Out Date: <%= r.check_out_date %><br>
+	Number of People: <%= r.number_of_people %><br><br>
+<% end %>
 
 
 

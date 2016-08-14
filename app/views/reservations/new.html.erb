@@ -1,0 +1,9 @@
+<a href="/">Home</a><br><br>
+
+<%= form_for @reservation do |f| %>
+<%= f.hidden_field :listing_id, value: @listing.id %>
+Check in date: <%= f.date_select :check_in_date %><br>
+Check out date: <%= f.date_select :check_out_date %><br>
+Number of guests: <%= f.select :number_of_people, options_for_select([['1 Guest', '1guest'], ['2 Guests', '2guests'], ['3 Guests', '3guests'], ['4 Guests', '4guests'], ['5 Guests', '5guests'], ['6 Guests', '6guests'], ['7 Guests', '7guests'], ['8 Guests', '8guests'], ['9 Guests', '9guests'], ['10 Guests', '10guests']]) %><br>
+<%= f.submit 'book now', :class => 'blackfont' %>
+<% end %>
