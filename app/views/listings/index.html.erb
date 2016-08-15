@@ -1,20 +1,3 @@
 <a href="/">Home</a><br><br>
-
-<% Listing.all.each do |l| %>
-	Room type: <%= l.property_type %><br>
-	Number of beds: <%= l.bed_count %><br>
-	Maximum number of people that can stay here: <%= l.max_people %><br>
-	Number of bathrooms: <%= l.bathroom_count %><br>
-	Bathroom type: <%= l.bathroom_type %>
-	Address: <%= l.address %><br>
-	City: <%= l.city %><br>
-	State: <%= l.state %><br>
-	Zipcode: <%= l.zipcode %><br>
-	Country: <%= l.country %><br>
-	Date Availability: <%= l.date_availability_start %> until <%= l.date_availability_end %><br>
-	Price per night: <%= l.price_per_night %><br>
-	<%= image_tag l.avatars[0] %><br>
-	<%= link_to 'Reserve', new_listing_reservation_path(l) %><br><br>
-<% end %>
-
-<%= will_paginate @listings %>
+<%= render @listings %>
+<%= will_paginate @listings%>

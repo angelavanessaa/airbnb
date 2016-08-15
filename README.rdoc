@@ -1,28 +1,44 @@
-== README
+class ListingsController < ApplicationController
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :require_login
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+	  def index
+      @listings = Listing.all
+    end
 
-Things you may want to cover:
+   	def show
+   	end
+   
+  	def new
+  		@listing = Listing.new
+   	end
+   
+   	def create
+   	  @listing = current_user.listings.new(listing_params)
+        if @listing.save
+          redirect_to listing_path(@listing)
+        end
+   	end
+   
+   	def edit
+   	end
+   
+   	def update
+      @listing.update(listing_params)
+      if @listing.save
+        redirect_to listing_path(@listing)
+      end
+   	end
+   
+   	def destroy
+   	end
 
-* Ruby version
+    private
+    def listing_params
+      params.require(:listing).permit(:property_type, :bed_count, :max_people, :bathroom_count, :bathroom_type, :country, :address, :city, :state, :zipcode, :price_per_night, :date_availability_start, :date_availability_end, :user_id, {avatars:[]})
+    end
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    def set_listing
+      @listing = Listing.find(params[:id])
+    end
+  end

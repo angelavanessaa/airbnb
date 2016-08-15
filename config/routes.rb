@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'listings/index'
+
   root 'welcome#index'
   resources :users, controller: "users", only: [:show, :update]
 
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   resources :listings do 
       resources :reservations, only: [:new]
   end
+  
   resources :reservations
 
   get "/sign_in" => "clearance/sessions#new", as: "sign_in"

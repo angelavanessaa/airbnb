@@ -11,7 +11,7 @@ Name: <%= current_user.firstname %> <%= current_user.lastname %>
 <% end %>
 
 <% unless @user.avatars[0].nil? %>
-<%= image_tag (@user.avatars[0].url) %><br><br>
+<%= image_tag (@user.avatars[0].square.url) %><br><br>
 <% end %>
 
 <h1>Your Listings</h1>
@@ -30,7 +30,7 @@ Name: <%= current_user.firstname %> <%= current_user.lastname %>
 	Date Availability: <%= l.date_availability_start %> until <%= l.date_availability_end %><br>
 	Price per night: <%= l.price_per_night %><br>
 	<%= link_to 'Edit', edit_listing_path %><br>
-	<%= image_tag l.avatars[0] %><br><br><br><br>
+	<%= image_tag l.avatars[0].square %><br><br><br><br>
 <% end %>
 
 <h1>Your Reservations</h1>
