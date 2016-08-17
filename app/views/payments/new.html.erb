@@ -1,0 +1,36 @@
+<h1>That's all for your order:</h1>
+
+
+<%= form_for(@payment) do |f| %>
+
+  <div class="field">
+    <%= f.label :check_in_date %><br>
+    <%= @reservation.check_in_date %><br>
+  </div>
+  <div class="field">
+    <%= f.label :check_out_date %><br>
+    <%= @reservation.check_out_date %><br>
+  </div>
+  <div class="field">
+    <div id="dropin"></div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
+
+<script type="text/javascript">
+  function setupBT() {
+    braintree.setup("<%= @client_token %>", 'dropin', {
+      container: 'dropin'
+    });
+  }
+
+  if (window.addEventListener)
+    window.addEventListener("load", setupBT, false);
+  else if (window.attachEvent)
+    window.attachEvent("onload", setupBT);
+  else window.onload = setupBT;
+
+</script>

@@ -21,7 +21,8 @@ class ReservationsController < ApplicationController
 		ReservationJob.perform_later(current_user.email, @host, @reservation.listing.id, @reservation.id)
 		SendToCustomerJob.perform_later(current_user.email, @host, @reservation.listing.id, @reservation.id)
 		if @reservation.save
-			redirect_to user_path(current_user)
+			# redirect_to user_path(current_user)
+			redirect_to payments_new_path + "?id=" + @reservation.id.to_s
 		end
 	end
 
