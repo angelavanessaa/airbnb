@@ -15,8 +15,11 @@ class ReservationsController < ApplicationController
 	end
 
 	def create
-		@book = current_user.reservations.new(booking_params)
-		if @book.save
+		@host = "dorkysmiles@gmail.com"
+		@reservation = current_user.reservations.new(booking_params)
+		ReservationMailer.notification_email(current_user.email, @host, @reservation.listing.id, @reservation.id).deliver_later
+		# ReservationJob.perform_later(current_user.email, @host, @reservation.listing.id, @reservation.id)
+		if @reservation.save
 			redirect_to user_path(current_user)
 		end
 	end
