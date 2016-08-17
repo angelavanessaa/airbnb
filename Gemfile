@@ -58,3 +58,6 @@ gem 'fog'
 
 #paginate gem
 gem 'will_paginate', '~> 3.1.0'
+
+#active job
+gem 'sidekiq'
