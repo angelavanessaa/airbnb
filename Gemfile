@@ -64,3 +64,6 @@ gem 'sidekiq'
 
 #payment system
 gem 'braintree'
+
+#seach engine
+gem 'searchkick'

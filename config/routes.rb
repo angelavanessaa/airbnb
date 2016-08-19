@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'listings/index'
 
   root 'welcome#index'
+  get '/search', to: 'listings#search'
   resources :users, controller: "users", only: [:show, :update]
 
 
